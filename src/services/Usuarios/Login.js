@@ -6,7 +6,7 @@ import Swal from 'sweetalert2';
 const API_URL = ApiUrl.apiUrl;
 
 export const getUsuarios = () => {
-  return axios.get(`${API_URL}/listUsuarios`)
+  return axios.get(`${API_URL}/ListarUsers`)
     .then(response => response.data)
     .catch(error => {
       console.error('Error fetching Usuarios:', error);
@@ -15,7 +15,7 @@ export const getUsuarios = () => {
 };
 
 export const createUsuario = (usuarioData) => {
-  return axios.post(`${API_URL}/crearUsuario`, usuarioData)
+  return axios.post(`${API_URL}/register`, usuarioData)
     .then(response => response.data)
     .catch(error => {
       console.error('Error creating Usuario:', error);
@@ -25,7 +25,7 @@ export const createUsuario = (usuarioData) => {
 
 export const iniciarSesion = async (emailUsuario, password) => { 
   try {
-    const response = await axios.post(`${API_URL}/iniciarSesion`, { emailUsuario, password });
+    const response = await axios.post(`${API_URL}/login`, { emailUsuario, password });
     const {token, userId, idPerfil} = response.data;
     localStorage.setItem('token', token);
     localStorage.setItem('userId', userId);
@@ -43,7 +43,7 @@ export const iniciarSesion = async (emailUsuario, password) => {
 
 
 export const editarUsuario = (idUsuario, usuarioData) => {
-  return axios.put(`${API_URL}/editUser/${idUsuario}`, usuarioData)
+  return axios.put(`${API_URL}/update/${idUsuario}`, usuarioData)
     .then(response => response.data)
     .catch(error => {
       console.error('Error editing Usuario:', error);

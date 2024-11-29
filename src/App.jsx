@@ -7,14 +7,13 @@ import RegistroUsuario from './views/Usuario/Registrar/registrar';
 import ListarUsuarios from './views/Usuario/Listar/listar';
 import CrearRegistros from './views/Registros/crear/crear'; './views/Registros/crear/crear';
 import ListarRegistros from './views/Registros/listar/listar'; "./views/Registros/listar/listar";
+import './App.css';
 
 import { BrowserRouter as Router, Route, Routes  } from 'react-router-dom';
 
 function App() {
   return (
-    // <div>
-    //   <LandingPage />
-    // </div> 
+   
     <Router>
       <Navbar />
       <Routes>

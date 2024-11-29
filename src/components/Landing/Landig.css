@@ -1,57 +1,135 @@
-
-body{
-    background-color: rgb(3, 34, 59);
+/* Fondo claro y limpio */
+body {
+  background-color: #f0f8ff; /* Azul muy claro */
+  color: #333;  /* Texto oscuro para buen contraste */
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  animation: fadeIn 1s ease-out; /* Animación de desvanecimiento */
 }
 
+/* Animación de desvanecimiento */
+@keyframes fadeIn {
+  from {
+      opacity: 0;
+  }
+  to {
+      opacity: 1;
+  }
+}
+
+/* Estilo de la tarjeta de inicio de sesión */
+.card {
+  background-color: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+  opacity: 0;
+  animation: slideUp 1s ease forwards;
+}
+
+/* Animación para la tarjeta */
+@keyframes slideUp {
+  from {
+      transform: translateY(20px);
+      opacity: 0;
+  }
+  to {
+      transform: translateY(0);
+      opacity: 1;
+  }
+}
+
+/* Título dentro de la tarjeta */
+.card h3 {
+  color: #3a8dff; /* Azul suave para el título */
+  margin-bottom: 20px;
+  font-size: 24px;
+}
+
+/* Cuerpo de la tarjeta (espaciado y alineación) */
+.card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Estilo para los campos del formulario */
+.form-group {
+  margin-bottom: 20px;
+}
+
+/* Estilo de las etiquetas (labels) */
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+  color: #3a8dff;  /* Color de la etiqueta en azul claro */
+}
+
+/* Estilo de los campos de entrada (inputs) */
+.form-group input {
+  width: 100%;
+  padding: 12px;
+  box-sizing: border-box;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  background-color: #f8f8f8;  /* Fondo muy claro para los inputs */
+  color: #333;
+  font-size: 16px;
+  transition: all 0.3s ease;  /* Transición suave en el hover */
+}
+
+/* Efecto de enfoque (focus) en los inputs */
+.form-group input:focus {
+  border-color: #3a8dff;
+  background-color: #ffffff;
+  box-shadow: 0 0 8px rgba(58, 141, 255, 0.3); /* Sombra suave en focus */
+}
+
+/* Estilo del botón de inicio de sesión */
+button {
+  width: 100%;
+  padding: 12px;
+  background-color: #3a8dff;  /* Azul claro TBBC */
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;  /* Transición suave */
+  box-shadow: 0 4px 12px rgba(58, 141, 255, 0.3);
+}
+
+/* Efecto hover en el botón */
+button:hover {
+  background-color: #2277cc;  /* Azul más oscuro en hover */
+}
+
+/* Mensaje de error */
+.error-message {
+  color: red;
+  font-size: 14px;
+  margin-top: 10px;
+  text-align: center;
+}
+
+/* Estilos responsivos para pantallas pequeñas */
+@media (max-width: 480px) {
   .card {
-    background-color: white;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 300px;
+      padding: 20px;
+      width: 90%;
   }
-  
+
   .card h3 {
-    text-align: center;
-    margin-bottom: 20px;
+      font-size: 22px;
   }
-  
-  .card-body {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .form-group {
-    margin-bottom: 15px;
-  }
-  
-  .form-group label {
-    display: block;
-    margin-bottom: 5px;
-  }
-  
-  .form-group input {
-    width: 100%;
-    padding: 8px;
-    box-sizing: border-box;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
-  
-  button {
-    width: 40%;
-    padding: 10px;
-    background-color: #007bff !important;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-  button:hover {
-    background-color: #062d56 !important;
-  }
-  
-  .error-message{
-    color: red;
-  }
+}

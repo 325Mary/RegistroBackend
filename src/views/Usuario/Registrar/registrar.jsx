@@ -3,10 +3,9 @@ import { createUsuario } from "../../../services/Usuarios/Login";
 import { useNavigate } from 'react-router-dom';
 
 const RegistroUsuario = () => {
-  const [nombreUsuario, setNombreUsuario] = useState('');
-  const [apellidoUsuario, setApellidoUsuario] = useState('');
-  const [IdentificacionUsuario, setIdentificacionUsuario] = useState('');
-  const [emailUsuario, setEmailUsuario] = useState('');
+  const [name, setname] = useState('');
+  const [Identificacion, setIdentificacion] = useState('');
+  const [email, setEmail] = useState('');
   const [error, setError] = useState('');
   const navigate = useNavigate();
 
@@ -17,10 +16,10 @@ const RegistroUsuario = () => {
 
     try {
       const userData = await createUsuario({
-        nombreUsuario,
-        apellidoUsuario,
-        IdentificacionUsuario,
-        emailUsuario
+        name,
+        Identificacion,
+        email,
+        password : Identificacion
       });
       console.log('Usuario creado:', userData);
       navigate('/listaUsuarios');
@@ -38,34 +37,12 @@ const RegistroUsuario = () => {
         <div className="card-body">
           <form onSubmit={handleRegistro}>
             <div className="form-group">
-              <label htmlFor="nombreUsuario">Nombre:</label>
+              <label htmlFor="name">Nombre:</label>
               <input
                 type="text"
-                id="nombreUsuario"
-                value={nombreUsuario}
-                onChange={(e) => setNombreUsuario(e.target.value)}
-                required
-              />
-            </div>
-
-            <div className="form-group">
-              <label htmlFor="apellidoUsuario">Apellido:</label>
-              <input
-                type="text"
-                id="apellidoUsuario"
-                value={apellidoUsuario}
-                onChange={(e) => setApellidoUsuario(e.target.value)}
-                required
-              />
-            </div>
-
-            <div className="form-group">
-              <label htmlFor="IdentificacionUsuario">Identificación:</label>
-              <input
-                type="text"
-                id="IdentificacionUsuario"
-                value={IdentificacionUsuario}
-                onChange={(e) => setIdentificacionUsuario(e.target.value)}
+                id="name"
+                value={name}
+                onChange={(e) => setname(e.target.value)}
                 required
               />
             </div>
@@ -73,12 +50,25 @@ const RegistroUsuario = () => {
            
 
             <div className="form-group">
-              <label htmlFor="emailUsuario">Email:</label>
+              <label htmlFor="Identificacion">Identificación:</label>
+              <input
+                type="text"
+                id="Identificacion"
+                value={Identificacion}
+                onChange={(e) => setIdentificacion(e.target.value)}
+                required
+              />
+            </div>
+
+           
+
+            <div className="form-group">
+              <label htmlFor="email">Email:</label>
               <input
                 type="email"
-                id="emailUsuario"
-                value={emailUsuario}
-                onChange={(e) => setEmailUsuario(e.target.value)}
+                id="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 required
               />
             </div>

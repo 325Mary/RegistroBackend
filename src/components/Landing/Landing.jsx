@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import './Landig.css';
+import './Landig.css'; 
 import { iniciarSesion } from "../../services/Usuarios/Login";
 import { useNavigate } from 'react-router-dom';
 
