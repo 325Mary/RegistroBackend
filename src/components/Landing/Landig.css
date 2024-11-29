@@ -1,7 +1,6 @@
-/* Fondo claro y limpio */
 body {
-  background-color: #f0f8ff; /* Azul muy claro */
-  color: #333;  /* Texto oscuro para buen contraste */
+  background-color: #f0f8ff; 
+  color: #333;
   font-family: 'Arial', sans-serif;
   margin: 0;
   padding: 0;
@@ -9,10 +8,8 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  animation: fadeIn 1s ease-out; /* Animación de desvanecimiento */
+  animation: fadeIn 1s ease-out; 
 }
-
-/* Animación de desvanecimiento */
 @keyframes fadeIn {
   from {
       opacity: 0;
@@ -22,7 +19,6 @@ body {
   }
 }
 
-/* Estilo de la tarjeta de inicio de sesión */
 .card {
   background-color: white;
   padding: 30px;
@@ -35,7 +31,6 @@ body {
   animation: slideUp 1s ease forwards;
 }
 
-/* Animación para la tarjeta */
 @keyframes slideUp {
   from {
       transform: translateY(20px);
@@ -47,74 +42,67 @@ body {
   }
 }
 
-/* Título dentro de la tarjeta */
 .card h3 {
-  color: #3a8dff; /* Azul suave para el título */
+  color: #3a8dff;
   margin-bottom: 20px;
   font-size: 24px;
 }
 
-/* Cuerpo de la tarjeta (espaciado y alineación) */
 .card-body {
   display: flex;
   flex-direction: column;
   gap: 20px;
 }
 
-/* Estilo para los campos del formulario */
 .form-group {
   margin-bottom: 20px;
 }
 
-/* Estilo de las etiquetas (labels) */
 .form-group label {
   display: block;
   margin-bottom: 8px;
   font-weight: bold;
-  color: #3a8dff;  /* Color de la etiqueta en azul claro */
+  color: #3a8dff;  
 }
 
-/* Estilo de los campos de entrada (inputs) */
 .form-group input {
   width: 100%;
   padding: 12px;
   box-sizing: border-box;
   border: 1px solid #ddd;
   border-radius: 6px;
-  background-color: #f8f8f8;  /* Fondo muy claro para los inputs */
+  background-color: #f8f8f8; 
   color: #333;
   font-size: 16px;
-  transition: all 0.3s ease;  /* Transición suave en el hover */
+  transition: all 0.3s ease; 
 }
 
-/* Efecto de enfoque (focus) en los inputs */
 .form-group input:focus {
   border-color: #3a8dff;
   background-color: #ffffff;
-  box-shadow: 0 0 8px rgba(58, 141, 255, 0.3); /* Sombra suave en focus */
+  box-shadow: 0 0 8px rgba(58, 141, 255, 0.3);
 }
 
-/* Estilo del botón de inicio de sesión */
 button {
   width: 100%;
   padding: 12px;
-  background-color: #3a8dff;  /* Azul claro TBBC */
-  color: white;
+  background-color: #3a8dff; 
+  color: black;
   border: none;
   border-radius: 6px;
   cursor: pointer;
   font-size: 16px;
   font-weight: bold;
-  transition: background-color 0.3s ease;  /* Transición suave */
+  transition: background-color 0.3s ease;
   box-shadow: 0 4px 12px rgba(58, 141, 255, 0.3);
+  width: 100px;
+  margin-left: 10px;
 }
 
-/* Efecto hover en el botón */
 button:hover {
-  background-color: #2277cc;  /* Azul más oscuro en hover */
+  background-color: #2277cc; 
 }
 
-/* Mensaje de error */
 .error-message {
   color: red;
   font-size: 14px;
@@ -122,7 +110,6 @@ button:hover {
   text-align: center;
 }
 
-/* Estilos responsivos para pantallas pequeñas */
 @media (max-width: 480px) {
   .card {
       padding: 20px;

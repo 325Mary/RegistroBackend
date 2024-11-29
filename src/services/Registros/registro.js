@@ -6,30 +6,17 @@ const ApiUrl = API_URL.apiUrl;
 
 
 
+
 export const getRegistros = () => {
-  const userId = localStorage.getItem('userId');
-  const token = localStorage.getItem('token');
-console.log(userId);
-  if (!userId || !token) {
-    const error = new Error('UserId o token no encontrados en localStorage');
-    console.error(error);
-    return Promise.reject(error);
-  }
-
-  return axios.get(`${ApiUrl}/listRegistros/${userId}`, {
-    headers: {
-      Authorization: token,
-    },
-  })
-    .then(response => response.data)
-    .catch(error => {
-      console.error('Error fetching Registros p:', error);
-      throw error;
-    });
-};
-
+    return axios.get(`${ApiUrl}/LstarRegistros`)
+      .then(response => response.data)
+      .catch(error => {
+        console.error('Error fetching registros:', error);
+        throw error;
+      });
+  };
 export const crearRegistros = (RegistrosData) => {
-  return axios.post(`${ApiUrl}/crearRegistros`, RegistrosData)
+  return axios.post(`${ApiUrl}/crearRegistro`, RegistrosData)
     .then(response => response.data)
     .catch(error => {
       console.error('Error creating Registros:', error);
@@ -37,8 +24,8 @@ export const crearRegistros = (RegistrosData) => {
     });
 };
 
-export const editarRegistros = (idRegistros, RegistrosData) => {
-  return axios.put(`${ApiUrl}/editRegistros/${idRegistros}`, RegistrosData)
+export const editarRegistro = (idRegistros, RegistrosData) => {
+  return axios.put(`${ApiUrl}/actualizar/${idRegistros}`, RegistrosData)
     .then(response => response.data)
     .catch(error => {
       console.error('Error editing Registros:', error);
@@ -46,8 +33,8 @@ export const editarRegistros = (idRegistros, RegistrosData) => {
     });
 };
 
-export const eliminarRegistros = (idRegistros) => {
-  return axios.delete(`${ApiUrl}/EliminarRegistros/${idRegistros}`)
+export const eliminarRegistro = (idRegistros) => {
+  return axios.delete(`${ApiUrl}/eliminar/${idRegistros}`)
     .then(response => response.data)
     .catch(error => {
       console.error('Error deleting Registros:', error);

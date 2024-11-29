@@ -23,23 +23,20 @@ export const createUsuario = (usuarioData) => {
     });
 };
 
-export const iniciarSesion = async (emailUsuario, password) => { 
-  try {
-    const response = await axios.post(`${API_URL}/login`, { emailUsuario, password });
-    const {token, userId, idPerfil} = response.data;
-    localStorage.setItem('token', token);
-    localStorage.setItem('userId', userId);
-    localStorage.setItem('idPerfil', idPerfil)
-    console.log(token)
-    console.log(userId);
-    console.log(idPerfil);
-    
-    return response.data;
-  } catch (error) {
-    console.error('Credenciales inválidas:', error);
-    throw error;
-  }
-};
+export const iniciarSesion = async (email, password) => { 
+    try {
+      const response = await axios.post(`${API_URL}/login`, { email, password });
+      const { token } = response.data;
+      localStorage.setItem('authToken', token);
+      localStorage.setItem('token', token);
+      window.dispatchEvent(new Event('storage')); 
+      return response.data;
+    } catch (error) {
+      console.error('Credenciales inválidas:', error);
+      throw error;
+    }
+  };
+  
 
 
 export const editarUsuario = (idUsuario, usuarioData) => {
@@ -52,7 +49,7 @@ export const editarUsuario = (idUsuario, usuarioData) => {
 };
 
 export const eliminarUsuario = (idUsuario) => {
-  return axios.delete(`${API_URL}/EliminarUser/${idUsuario}`)
+  return axios.delete(`${API_URL}/delete/${idUsuario}`)
     .then(response => response.data)
     .catch(error => {
       console.error('Error deleting Usuario:', error);
@@ -62,30 +59,32 @@ export const eliminarUsuario = (idUsuario) => {
 
 
 export const useCerrarSesion = () => {
-  const navigate = useNavigate();
-
-  const cerrarSesion = async () => {
-    const token = localStorage.getItem('token');
-    if (!token) {
-      console.error('No hay token almacenado en el localStorage');
-      return;
-    }
-
-    try {
-      const headers = {
-        Authorization: `${token}`
-      };
-
-      await axios.post(`${API_URL}/cerrarSesion`, {}, { headers });
-
-      localStorage.removeItem('token');
-      Swal.fire('Sesión cerrada', 'Has cerrado sesión exitosamente', 'success');
-      navigate('/');
-    } catch (error) {
-      console.error('Error al cerrar sesión:', error);
-      Swal.fire('Error', 'No se pudo cerrar la sesión', 'error');
-    }
+    const navigate = useNavigate();
+  
+    const cerrarSesion = async () => {
+      const token = localStorage.getItem('token');
+      if (!token) {
+        console.error('No hay token almacenado en el localStorage');
+        Swal.fire('Error', 'No se encontró un token válido', 'error');
+        return;
+      }
+  
+      try {
+        const headers = {
+          Authorization: `Bearer ${token}`, 
+        };
+  
+        await axios.post(`${API_URL}/Logout`, {}, { headers });
+  
+        localStorage.removeItem('token');
+        Swal.fire('Sesión cerrada', 'Has cerrado sesión exitosamente', 'success');
+        navigate('/');
+      } catch (error) {
+        console.error('Error al cerrar sesión:', error.response?.data || error);
+        Swal.fire('Error', 'No se pudo cerrar la sesión', 'error');
+      }
+    };
+  
+    return { cerrarSesion };
   };
-
-  return { cerrarSesion };
-};
+  

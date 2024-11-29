@@ -1,33 +1,24 @@
-import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../../services/Usuarios/receptor';
 import { useCerrarSesion } from '../../services/Usuarios/Login';
-import { useTokenValidator } from '../../services/Usuarios/validador';
 import './Navbar.css';
+import { useState } from 'react';
 
 const Navbar = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [perfil, setPerfil] = useState('');
-  const navigate = useNavigate();
+  const { isLoggedIn, token, logout } = useAuth();
   const { cerrarSesion } = useCerrarSesion();
-  const isLoggedInFromToken = useTokenValidator();
 
-  useEffect(() => {
-    setIsLoggedIn(isLoggedInFromToken);
+  // Estados para controlar el despliegue de los menús
+  const [showUsuariosMenu, setShowUsuariosMenu] = useState(false);
+  const [showContactosMenu, setShowContactosMenu] = useState(false);
 
-    const obtenerPerfil = () => {
-      const perfilGuardado = localStorage.getItem('idPerfil');
-      setPerfil(perfilGuardado);
-    };
+  if (isLoggedIn === null) {
+    return null;
+  }
 
-    obtenerPerfil(); 
-  }, [isLoggedInFromToken]);
-
-  const handleCerrarSesion = async () => {
-    await cerrarSesion();
-    setIsLoggedIn(false);
-    setPerfil('');
-    navigate('/');
+  const handleCerrarSesion = () => {
+    cerrarSesion();
+    logout();
   };
 
   return (
@@ -35,29 +26,47 @@ const Navbar = () => {
       <div className="container">
         <ul className="nav-links">
           <li><Link to="/">Inicio</Link></li>
-          {isLoggedIn && (
+          {isLoggedIn && token && (
             <>
-              {perfil === '1' && (
-                <>
-                  <li><Link to="/dashboard">Dashboard</Link></li>
-                  <li><Link to="/registro">Registro</Link></li>
-                  <li><Link to="/listaUsuarios">Lista de Usuarios</Link></li>
-                  <li><Link to="/CrearRegistros">Crear Registros</Link></li>
-                  <li><Link to="/listaRegistros">Listar Registros</Link></li>
-                </>
-              )}
-              {perfil === '2' && (
-                <>
-                  <li><Link to="/listaRegistros">Listar Registros</Link></li>
-                  <li><Link to="/RegistrosAsignados">Gestión de Registros</Link></li>
-                </>
-              )}
-              {perfil === '3' && (
-                <>
-                  <li><Link to="/ListRegistrosAsignados">Registros Asignados</Link></li>
-                </>
-              )}
-              <li><Link className='btn' onClick={handleCerrarSesion}>Cerrar Sesión</Link></li>
+              <li>
+                {/* Menú desplegable para Usuarios */}
+                <div
+                  className="dropdown"
+                  onMouseEnter={() => setShowUsuariosMenu(true)}
+                  onMouseLeave={() => setShowUsuariosMenu(false)}
+                >
+                  <span className="dropdown-title">Usuarios</span>
+                  {showUsuariosMenu && (
+                    <ul className="dropdown-menu">
+                      <li><Link to="/registro">Registro</Link></li>
+                      <li><Link to="/listaUsuarios">Lista de Usuarios</Link></li>
+                    </ul>
+                  )}
+                </div>
+              </li>
+
+              <li>
+                {/* Menú desplegable para Contactos */}
+                <div
+                  className="dropdown"
+                  onMouseEnter={() => setShowContactosMenu(true)}
+                  onMouseLeave={() => setShowContactosMenu(false)}
+                >
+                  <span className="dropdown-title">Contactos</span>
+                  {showContactosMenu && (
+                    <ul className="dropdown-menu">
+                      <li><Link to="/CrearRegistro">Crear Registros</Link></li>
+                      <li><Link to="/ListarRegistros">Listar Registros</Link></li>
+                    </ul>
+                  )}
+                </div>
+              </li>
+
+              <li>
+                <button className="btn" onClick={handleCerrarSesion}>
+                  Cerrar Sesión
+                </button>
+              </li>
             </>
           )}
         </ul>

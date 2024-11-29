@@ -1,21 +1,26 @@
 import { useState } from 'react';
-import './Landig.css'; 
+import './Landig.css';
 import { iniciarSesion } from "../../services/Usuarios/Login";
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../../services/Usuarios/receptor'; 
 
 const LandingPage = () => {
-  const [emailUsuario, setEmailUsuario] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const navigate = useNavigate();
+  const { login } = useAuth(); 
 
   const handleLogin = async (e) => {
     e.preventDefault();
 
     try {
-      const userData = await iniciarSesion(emailUsuario, password);
-      console.log('Usuario autenticado:', userData);
-      navigate('/dashboard'); 
+      const token = await iniciarSesion(email, password);
+
+      login(token);
+      console.log(login);
+      
+      navigate('/dashboard');
     } catch (error) {
       setError('Credenciales inválidas. Por favor, intenta nuevamente.');
       console.error('Error al iniciar sesión:', error);
@@ -24,17 +29,17 @@ const LandingPage = () => {
 
   return (
     <div className="landing-page">
-      <div className="card"> 
+      <div className="card">
         <h3>Iniciar Sesión</h3>
         <div className="card-body">
           <form onSubmit={handleLogin}>
             <div className="form-group">
-              <label htmlFor="emailUsuario">Email:</label>
+              <label htmlFor="email">Email:</label>
               <input
                 type="text"
-                id="emailUsuario"
-                value={emailUsuario}
-                onChange={(e) => setEmailUsuario(e.target.value)}
+                id="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 required
               />
             </div>
@@ -47,9 +52,11 @@ const LandingPage = () => {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
-              />      
-            </div> 
-            {error && <p className="error-message">{error}</p>}
+              />
+            </div>
+
+             {error && <p className="error-message">{error}</p>}
+
             <button type="submit">Ingresar</button>
           </form>
         </div>
