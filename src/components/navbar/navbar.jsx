@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../../services/Usuarios/receptor';
 import { useCerrarSesion } from '../../services/Usuarios/Login';
-import './Navbar.css';
+import './navbar.css';
 
 const Navbar = () => {
   const { isLoggedIn, token, logout } = useAuth();
