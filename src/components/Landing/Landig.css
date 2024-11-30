@@ -106,14 +106,18 @@ input:focus {
 
 button {
   width: 100%;
-  padding: 10px;
-  background-color: #4a90e2;
+  padding: 12px;
+  background-color: #3a8dff; 
+  color: black;
   border: none;
-  border-radius: 5px;
-  color: white;
-  font-size: 16px;
+  border-radius: 6px;
   cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
   transition: background-color 0.3s ease;
+  box-shadow: 0 4px 12px rgba(58, 141, 255, 0.3);
+  width: 100px;
+  margin-left: 10px;
 }
 
 button:hover {
