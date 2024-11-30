@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { getRegistros, editarRegistro, eliminarRegistro } from '../../../services/Registros/registro';
-import './Listar.css';
+import './listar.css';
 import Swal from 'sweetalert2';
 
 const ListarRegistros = () => {
