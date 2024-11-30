@@ -30,7 +30,7 @@ const CrearRegistros = () => {
   return (
     <div className="registro">
       <div className="card">
-        <h3>Crear Registro</h3>
+        <h3>FORMULARIO DE REGISTRO</h3>
         <div className="card-body">
           <form onSubmit={handleCrearRegistro}>
             <div className="form-group">
@@ -68,7 +68,7 @@ const CrearRegistros = () => {
 
             {error && <p className="error-message">{error}</p>}
 
-            <button type="submit">Registrar</button>
+            <button className='buttons' type="submit">GUARDAR</button>
           </form>
         </div>
       </div>

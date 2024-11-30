@@ -2,7 +2,6 @@ import React from 'react';
 import LandingPage from './components/Landing/Landing';
 import Dashboard from './components/dashboard/dashboard'
 import Navbar from './components/navbar/navbar';
-import notFound from './components/notFound/notFound';
 import RegistroUsuario from './views/Usuario/Registrar/registrar';
 import ListarUsuarios from './views/Usuario/Listar/listar';
 import CrearRegistros from './views/Registros/crear/crear'; 

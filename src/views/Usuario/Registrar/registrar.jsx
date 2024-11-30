@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 
 const RegistroUsuario = () => {
   const [name, setname] = useState('');
-  const [Identificacion, setIdentificacion] = useState('');
+  const [identificacion, setIdentificacion] = useState('');
   const [email, setEmail] = useState('');
   const [error, setError] = useState('');
   const navigate = useNavigate();
@@ -17,9 +17,9 @@ const RegistroUsuario = () => {
     try {
       const userData = await createUsuario({
         name,
-        Identificacion,
+        identificacion,
         email,
-        password : Identificacion
+        password : identificacion
       });
       console.log('Usuario creado:', userData);
       navigate('/listaUsuarios');
@@ -54,7 +54,7 @@ const RegistroUsuario = () => {
               <input
                 type="text"
                 id="Identificacion"
-                value={Identificacion}
+                value={identificacion}
                 onChange={(e) => setIdentificacion(e.target.value)}
                 required
               />
@@ -74,7 +74,7 @@ const RegistroUsuario = () => {
             </div>
 
             {error && <p className="error-message">{error}</p>}
-            <button type="submit">Registrar</button>
+            <button className='buttons' type="submit">Registrar</button>
           </form>
         </div>
       </div>

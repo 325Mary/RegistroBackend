@@ -6,7 +6,12 @@ import Swal from 'sweetalert2';
 const API_URL = ApiUrl.apiUrl;
 
 export const getUsuarios = () => {
-  return axios.get(`${API_URL}/ListarUsers`)
+    const token = localStorage.getItem('token');
+    
+    const headers = {
+        Authorization: `Bearer ${token}`, 
+      };
+  return axios.get(`${API_URL}/ListarUsers`,  { headers })
     .then(response => response.data)
     .catch(error => {
       console.error('Error fetching Usuarios:', error);
@@ -40,7 +45,13 @@ export const iniciarSesion = async (email, password) => {
 
 
 export const editarUsuario = (idUsuario, usuarioData) => {
-  return axios.put(`${API_URL}/update/${idUsuario}`, usuarioData)
+    const token = localStorage.getItem('token');
+    
+    const headers = {
+        Authorization: `Bearer ${token}`, 
+      };
+    
+  return axios.put(`${API_URL}/update/${idUsuario}`, usuarioData, {headers})
     .then(response => response.data)
     .catch(error => {
       console.error('Error editing Usuario:', error);
@@ -49,7 +60,12 @@ export const editarUsuario = (idUsuario, usuarioData) => {
 };
 
 export const eliminarUsuario = (idUsuario) => {
-  return axios.delete(`${API_URL}/delete/${idUsuario}`)
+    const token = localStorage.getItem('token');
+    
+    const headers = {
+        Authorization: `Bearer ${token}`, 
+      };
+  return axios.delete(`${API_URL}/delete/${idUsuario}`, {headers})
     .then(response => response.data)
     .catch(error => {
       console.error('Error deleting Usuario:', error);

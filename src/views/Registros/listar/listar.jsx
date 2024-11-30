@@ -12,15 +12,17 @@ const ListarRegistros = () => {
     phone: '',
     email: ''
   });
+  const [searchQuery, setSearchQuery] = useState('');
+
   const fetchRegistros = async () => {
     try {
       const RegistrosData = await getRegistros();
       console.log('Registros obtenidos:', RegistrosData);
-  
+
       if (RegistrosData?.data && Array.isArray(RegistrosData.data)) {
         setRegistros(RegistrosData.data);
       } else if (Array.isArray(RegistrosData)) {
-        setRegistros(RegistrosData); 
+        setRegistros(RegistrosData);
       } else {
         console.warn('Formato inesperado de RegistrosData:', RegistrosData);
       }
@@ -29,14 +31,11 @@ const ListarRegistros = () => {
       console.error('Error al obtener Registros:', error);
     }
   };
-  
-  
-  
+
   useEffect(() => {
     fetchRegistros();
   }, []);
 
- 
   const handleEdit = (index) => {
     setEditingIndex(index);
     setEditRegistro({ ...Registros[index] });
@@ -53,12 +52,12 @@ const ListarRegistros = () => {
       phone: editRegistro.phone || null,
       email: editRegistro.email || ''
     };
-  
+
     try {
       console.log('Datos antes de enviar:', sanitizedData);
       const response = await editarRegistro(id, sanitizedData);
       console.log('Respuesta del servidor:', response);
-  
+
       await fetchRegistros();
       setEditingIndex(-1);
       Swal.fire('Éxito', 'Registro actualizado correctamente', 'success');
@@ -67,7 +66,6 @@ const ListarRegistros = () => {
       Swal.fire('Error', 'No se pudo actualizar el Registro', 'error');
     }
   };
-  
 
   const handleCancel = () => {
     setEditingIndex(-1);
@@ -96,55 +94,80 @@ const ListarRegistros = () => {
     }
   };
 
+  const filteredRegistros = Registros.filter((registro) =>
+    registro.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    registro.phone.includes(searchQuery) ||
+    registro.email.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
   return (
-    <div className="table-container">
-      <h1>Lista de Registros</h1>
+    <div className="cards-container">
+      <h1>LISTA DE CONTACTOS</h1>
       {error && <p>Error: {error}</p>}
-      <table>
-        <thead>
-          <tr>
-            <th>Nombre</th>
-            <th>Telefono</th>
-            <th>Email</th>
-            <th>Acciones</th>
-          </tr>
-        </thead>
-        <tbody>
-  {Registros.length > 0 ? (
-    Registros.map((Registro, index) => (
-      <tr key={Registro.id}>
-        {editingIndex === index ? (
-          <>
-            <td><input type="text" name="name" value={editRegistro.name} onChange={handleChange} /></td>
-            <td><input type="text" name="phone" value={editRegistro.phone} onChange={handleChange} /></td>
-            <td><input type="email" name="email" value={editRegistro.email} onChange={handleChange} /></td>
-            <td>
-              <button onClick={() => handleUpdate(Registro.id)}>Actualizar</button>
-              <button onClick={handleCancel}>Cancelar</button>
-            </td>
-          </>
+
+      <div className="search-container">
+        <input
+          type="text"
+          className="search-input"
+          placeholder="Buscar por nombre, teléfono o email..."
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+        />
+      </div>
+
+      <div className="cards">
+        {filteredRegistros.length > 0 ? (
+          filteredRegistros.map((Registro, index) => (
+            <div className="cardContac" key={Registro.id}>
+              {editingIndex === index ? (
+                <div className="card-content">
+                  <div className="card-info">
+                    <input
+                      type="text"
+                      name="name"
+                      value={editRegistro.name}
+                      onChange={handleChange}
+                      placeholder="Nombre"
+                    />
+                    <input
+                      type="text"
+                      name="phone"
+                      value={editRegistro.phone}
+                      onChange={handleChange}
+                      placeholder="Teléfono"
+                    />
+                    <input
+                      type="email"
+                      name="email"
+                      value={editRegistro.email}
+                      onChange={handleChange}
+                      placeholder="Email"
+                    />
+                  </div>
+                  <div className="card-actions">
+                    <button onClick={() => handleUpdate(Registro.id)}>Actualizar</button>
+                    <button onClick={handleCancel}>Cancelar</button>
+                  </div>
+                </div>
+              ) : (
+                <div className="card-content">
+                  <div className="card-info">
+                    <h3>Nombre: {Registro.name}</h3>
+                    <p>Tel: {Registro.phone}</p>
+                    <p>Email: {Registro.email}</p>
+                  </div>
+                  <div className="card-actions">
+                    <button  onClick={() => handleEdit(index)}>Editar</button>
+                    <button  onClick={() => handleDelete(Registro.id)}>Eliminar</button>
+                  </div>
+                </div>
+              )}
+            </div>
+          ))
         ) : (
-          <>
-            <td>{Registro.name}</td>
-            <td>{Registro.phone}</td>
-            <td>{Registro.email}</td>
-            <td>
-              <button onClick={() => handleEdit(index)}>Editar</button>
-              <button onClick={() => handleDelete(Registro.id)}>Eliminar</button>
-            </td>
-          </>
+          <p>No hay registros para mostrar</p>
         )}
-      </tr>
-    ))
-  ) : (
-    <tr>
-      <td colSpan="4">No hay Registros para mostrar</td>
-    </tr>
-  )}
-</tbody>
-
-
-      </table>
+      </div>
     </div>
   );
 };

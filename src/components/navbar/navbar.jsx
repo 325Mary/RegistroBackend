@@ -8,7 +8,6 @@ const Navbar = () => {
   const { isLoggedIn, token, logout } = useAuth();
   const { cerrarSesion } = useCerrarSesion();
 
-  // Estados para controlar el despliegue de los menús
   const [showUsuariosMenu, setShowUsuariosMenu] = useState(false);
   const [showContactosMenu, setShowContactosMenu] = useState(false);
 
@@ -25,11 +24,14 @@ const Navbar = () => {
     <nav className="navbar">
       <div className="container">
         <ul className="nav-links">
+        {!isLoggedIn && !token && (
+            <>
           <li><Link to="/">Inicio</Link></li>
+          </>
+          )}
           {isLoggedIn && token && (
             <>
               <li>
-                {/* Menú desplegable para Usuarios */}
                 <div
                   className="dropdown"
                   onMouseEnter={() => setShowUsuariosMenu(true)}
@@ -46,7 +48,6 @@ const Navbar = () => {
               </li>
 
               <li>
-                {/* Menú desplegable para Contactos */}
                 <div
                   className="dropdown"
                   onMouseEnter={() => setShowContactosMenu(true)}
