@@ -1,122 +1,210 @@
 body {
-  background-color: #f0f8ff; 
-  color: #333;
-  font-family: 'Arial', sans-serif;
   margin: 0;
   padding: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  background: linear-gradient(45deg, #f06, #4a90e2);
+  background-size: 400% 400%;
+  animation: gradientAnimation 8s ease infinite;
   height: 100vh;
-  animation: fadeIn 1s ease-out; 
 }
-@keyframes fadeIn {
-  from {
-      opacity: 0;
+
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 50%;
   }
-  to {
-      opacity: 1;
+  50% {
+    background-position: 100% 50%;
   }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.landing-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  height: 100%;
+  padding: 20px;
+  position: relative;
+}
+
+.content {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.info-text {
+  font-size: 18px;
+  font-weight: bold;
+  color: #fff;
+  opacity: 0;
+  transform: translateX(0);
+  transition: all 0.5s ease-in-out;
+  margin: 10px 0;
+}
+
+.info-text.animate-left {
+  transform: translateX(-100%);
+}
+
+.info-text.animate-right {
+  transform: translateX(100%);
+}
+
+.info-text.visible-left {
+  opacity: 1;
+  transform: translateX(0);
+  transition: transform 1s ease, opacity 1s ease;
+}
+
+.info-text.visible-right {
+  opacity: 1;
+  transform: translateX(0);
+  transition: transform 1s ease, opacity 1s ease;
 }
 
 .card {
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0.9);
   padding: 30px;
-  border-radius: 12px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
   width: 100%;
   max-width: 400px;
-  text-align: center;
+  position: relative;
+  top: 50px;
   opacity: 0;
-  animation: slideUp 1s ease forwards;
+  transform: translateY(-100%);
+  transition: all 1s ease-out;
 }
 
-@keyframes slideUp {
-  from {
-      transform: translateY(20px);
-      opacity: 0;
-  }
-  to {
-      transform: translateY(0);
-      opacity: 1;
-  }
+.card.visible-card {
+  opacity: 1;
+  transform: translateY(0);
 }
 
-.card h3 {
-  color: #FFD700;
-  margin-bottom: 20px;
-  font-size: 24px;
-}
-
-.card-body {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-.form-group {
-  margin-bottom: 20px;
-}
-
-.form-group label {
-  display: block;
-  margin-bottom: 8px;
-  font-weight: bold;
-  color: #FFD700;  
-}
-
-.form-group input {
-  width: 100%;
-  padding: 12px;
-  box-sizing: border-box;
-  border: 1px solid #ddd;
-  border-radius: 6px;
-  background-color: #f8f8f8; 
+h3 {
+  text-align: center;
   color: #333;
-  font-size: 16px;
-  transition: all 0.3s ease; 
+  margin-bottom: 20px;
 }
 
-.form-group input:focus {
-  border-color: #3a8dff;
-  background-color: #ffffff;
-  box-shadow: 0 0 8px rgba(58, 141, 255, 0.3);
+input {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  transition: border 0.3s ease;
+}
+
+input:focus {
+  border-color: #4a90e2;
+  outline: none;
 }
 
 button {
   width: 100%;
-  padding: 12px;
-  background-color: #3a8dff; 
-  color: black;
+  padding: 10px;
+  background-color: #4a90e2;
   border: none;
-  border-radius: 6px;
-  cursor: pointer;
+  border-radius: 5px;
+  color: white;
   font-size: 16px;
-  font-weight: bold;
+  cursor: pointer;
   transition: background-color 0.3s ease;
-  box-shadow: 0 4px 12px rgba(58, 141, 255, 0.3);
-  width: 100px;
-  margin-left: 10px;
 }
 
 button:hover {
-  background-color: #2277cc; 
+  background-color: #357ab7;
 }
 
 .error-message {
   color: red;
-  font-size: 14px;
+  text-align: center;
   margin-top: 10px;
+}
+
+.navigation-list {
+  list-style: none;
+  padding: 0;
+  margin-top: 20px;
   text-align: center;
 }
 
+.register-link {
+  color: #4a90e2;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.register-link:hover {
+  text-decoration: underline;
+}
+
+input:focus, button:hover {
+  transform: scale(1.05);
+}
+
 @media (max-width: 480px) {
-  .card {
-      padding: 20px;
-      width: 90%;
+  .landing-page {
+    padding: 10px;
   }
 
-  .card h3 {
-      font-size: 22px;
+  .content {
+    font-size: 16px;
+  }
+
+  .card {
+    padding: 20px;
+    top: 30px;
+  }
+
+  h3 {
+    font-size: 18px;
+  }
+
+  .info-text {
+    font-size: 16px;
+  }
+
+  input, button {
+    padding: 12px;
+    font-size: 14px;
+  }
+
+  .register-link {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 768px) {
+  .landing-page {
+    padding: 20px;
+  }
+
+  .card {
+    width: 90%;
+  }
+
+  .info-text {
+    font-size: 18px;
+  }
+
+  input, button {
+    padding: 12px;
+    font-size: 15px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .card {
+    width: 400px;
+    top: 50px;
+  }
+
+  .info-text {
+    font-size: 20px;
   }
 }

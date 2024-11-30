@@ -6,6 +6,7 @@ import RegistroUsuario from './views/Usuario/Registrar/registrar';
 import ListarUsuarios from './views/Usuario/Listar/listar';
 import CrearRegistros from './views/Registros/crear/crear'; 
 import ListarRegistros from './views/Registros/listar/listar';
+import Footer from './components/footer/footer';
 import './App.css';
 
 import { BrowserRouter as Router, Route, Routes  } from 'react-router-dom';
@@ -24,6 +25,7 @@ function App() {
       <Route path='/CrearRegistro' element={<CrearRegistros />} />
       <Route path='**' element={<found/>}/>
     </Routes>
+    <Footer />
   </Router> 
   );
 }

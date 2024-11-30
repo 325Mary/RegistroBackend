@@ -26,7 +26,7 @@ const Navbar = () => {
         <ul className="nav-links">
         {!isLoggedIn && !token && (
             <>
-          <li><Link to="/">Inicio</Link></li>
+            {/* <li><Link to="/">Inicio</Link></li> */}
           </>
           )}
           {isLoggedIn && token && (
