@@ -100,6 +100,8 @@ const ListarRegistros = () => {
     registro.email.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
+  const sortedRegistros = filteredRegistros.sort((a, b) => a.name.localeCompare(b.name));
+
   return (
     <div className="cards-container">
       <h1>LISTA DE CONTACTOS</h1>
@@ -116,8 +118,8 @@ const ListarRegistros = () => {
       </div>
 
       <div className="cards">
-        {filteredRegistros.length > 0 ? (
-          filteredRegistros.map((Registro, index) => (
+        {sortedRegistros.length > 0 ? (
+          sortedRegistros.map((Registro, index) => (
             <div className="cardContac" key={Registro.id}>
               {editingIndex === index ? (
                 <div className="card-content">
