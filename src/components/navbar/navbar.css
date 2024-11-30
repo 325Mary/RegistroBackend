@@ -1,4 +1,4 @@
-.navbar {
+  .navbar {
   position: fixed;
   top: 0;
   left: 0;
@@ -10,88 +10,42 @@
   backdrop-filter: blur(10px); 
   border-bottom: 1px solid rgba(255, 255, 255, 0.3); 
   text-align: right;
-
 }
 
-  
-  .navbar .container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 20px; 
-  }
-  
-  .nav-links {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-  }
-  
-  .nav-links li {
-    display: inline-block;
-    margin-right: 20px; 
-  }
-  
-  .nav-links li:last-child {
-    margin-right: 0;
-  }
-  
-  .nav-links li a {
-    color: #FFD700; 
-    text-decoration: none; 
-    font-weight: bold; 
-  }
-  
-  .btn{
-
-background-color: transparent;
-text-decoration: none;}
-.navbar {
-  background-color: #333;
-  padding: 10px 20px;
-  color: #FFD700;
-}
-
-.container {
+.navbar .container {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 0 20px; 
 }
 
-.nav-links {
-  list-style: none;
+  .nav-links {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
   display: flex;
   gap: 15px;
 }
 
-.nav-links li {
-  position: relative;
+.nav-links li {  list-style: none;
+  display: inline-block;
 }
 
-.nav-links a {
-  color: white;
-  text-decoration: none;
-  padding: 5px 10px;
-  transition: background-color 0.3s;
+.nav-links li a {
+  color: #FFD700; 
+  text-decoration: none; 
+  font-weight: bold; 
+  list-style: none;
+
 }
 
-.nav-links a:hover {
-  background-color: #555;
+ .btn {
+  background-color: transparent;
+  text-decoration: none;  color: #FFD700; 
+
 }
 
-.btn {
-  color: #FFD700;
-  border: none;
-  padding: 5px 10px;
-  cursor: pointer;
-}
-
-.btn:hover {
-  background-color: #e5e1e1;
-  color: black;
-}
-
-.dropdown {
+  .dropdown {
   position: relative;
   cursor: pointer;
 }
@@ -134,4 +88,49 @@ text-decoration: none;}
 
 .dropdown-menu li a:hover {
   background-color: #555;
+}
+
+  @media (max-width: 768px) {
+  .navbar .container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .nav-links {
+    display: none;
+    width: 100%;
+    flex-direction: column;
+    gap: 10px;
+    background-color: #333;
+    padding: 10px 0;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .nav-links li {
+    text-align: left;
+    width: 100%;
+  }
+
+  .hamburger {
+    display: block;
+    cursor: pointer;
+    font-size: 30px;
+    color: #FFD700;
+  }
+
+  .hamburger.active {
+    color: #FFD700;  list-style: none;
+
+  }
+}
+
+ .hamburger {
+  display: none;
+}
+
+.hamburger:hover {
+  color: #e5e1e1;
 }
