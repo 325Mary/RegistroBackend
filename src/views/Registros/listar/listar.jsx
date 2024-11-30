@@ -94,11 +94,13 @@ const ListarRegistros = () => {
     }
   };
 
-  const filteredRegistros = Registros.filter((registro) =>
-    registro.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    registro.phone.includes(searchQuery) ||
-    registro.email.toLowerCase().includes(searchQuery.toLowerCase())
-  );
+  const filteredRegistros = Registros.filter((registro) => {
+    if (searchQuery.length < 3) return true; 
+    return (
+      registro.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      registro.phone.includes(searchQuery)
+    );
+  });
 
   const sortedRegistros = filteredRegistros.sort((a, b) => a.name.localeCompare(b.name));
 
@@ -111,7 +113,7 @@ const ListarRegistros = () => {
         <input
           type="text"
           className="search-input"
-          placeholder="Buscar por nombre, teléfono o email..."
+          placeholder="Buscar por nombre o teléfono..."
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
         />
@@ -159,8 +161,8 @@ const ListarRegistros = () => {
                     <p>Email: {Registro.email}</p>
                   </div>
                   <div className="card-actions">
-                    <button  onClick={() => handleEdit(index)}>Editar</button>
-                    <button  onClick={() => handleDelete(Registro.id)}>Eliminar</button>
+                    <button onClick={() => handleEdit(index)}>Editar</button>
+                    <button onClick={() => handleDelete(Registro.id)}>Eliminar</button>
                   </div>
                 </div>
               )}
