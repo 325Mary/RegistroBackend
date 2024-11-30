@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { useAuth } from '../../services/Usuarios/receptor';
 import { useCerrarSesion } from '../../services/Usuarios/Login';
-import './Navbar.css';
+import './navbar.css';
 import { useState } from 'react';
 
 const Navbar = () => {
