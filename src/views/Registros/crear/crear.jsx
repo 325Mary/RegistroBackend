@@ -22,9 +22,12 @@ const CrearRegistros = () => {
       console.log('Registro creado:', RegistrosData);
       navigate('/ListarRegistros'); 
     } catch (error) {
-      setError('Error al registrar. Por favor, intenta nuevamente.');
-      console.error('Error al registrar:', error);
-    }
+      if (error.response && error.response.data && error.response.data.error) {
+          setError(error.response.data.error);
+        }  else {
+          setError('Error al registrar Contacto. Por favor, intenta nuevamente.');
+      }      console.error('Error al registrar Contacto:', error);
+  }
   };
 
   return (

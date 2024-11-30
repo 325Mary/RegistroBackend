@@ -25,8 +25,11 @@ const RegistroUsuario = () => {
       navigate('/listaUsuarios');
 
     } catch (error) {
-      setError('Error al registrar usuario. Por favor, intenta nuevamente.');
-      console.error('Error al registrar usuario:', error);
+        if (error.response && error.response.data && error.response.data.error) {
+            setError(error.response.data.error);
+          }  else {
+            setError('Error al registrar usuario. Por favor, intenta nuevamente.');
+        }      console.error('Error al registrar usuario:', error);
     }
   };
 
