@@ -8,7 +8,12 @@ const ApiUrl = API_URL.apiUrl;
 
 
 export const getRegistros = () => {
-    return axios.get(`${ApiUrl}/LstarRegistros`)
+    const token = localStorage.getItem('token');
+    
+    const headers = {
+        Authorization: `Bearer ${token}`, 
+      };
+    return axios.get(`${ApiUrl}/LstarRegistros`, {headers})
       .then(response => response.data)
       .catch(error => {
         console.error('Error fetching registros:', error);
@@ -16,7 +21,12 @@ export const getRegistros = () => {
       });
   };
 export const crearRegistros = (RegistrosData) => {
-  return axios.post(`${ApiUrl}/crearRegistro`, RegistrosData)
+    const token = localStorage.getItem('token');
+    
+    const headers = {
+        Authorization: `Bearer ${token}`, 
+      };
+  return axios.post(`${ApiUrl}/crearRegistro`, RegistrosData, {headers})
     .then(response => response.data)
     .catch(error => {
       console.error('Error creating Registros:', error);
@@ -25,7 +35,12 @@ export const crearRegistros = (RegistrosData) => {
 };
 
 export const editarRegistro = (idRegistros, RegistrosData) => {
-  return axios.put(`${ApiUrl}/actualizar/${idRegistros}`, RegistrosData)
+    const token = localStorage.getItem('token');
+    
+    const headers = {
+        Authorization: `Bearer ${token}`, 
+      };
+  return axios.put(`${ApiUrl}/actualizar/${idRegistros}`, RegistrosData, {headers})
     .then(response => response.data)
     .catch(error => {
       console.error('Error editing Registros:', error);
@@ -34,7 +49,12 @@ export const editarRegistro = (idRegistros, RegistrosData) => {
 };
 
 export const eliminarRegistro = (idRegistros) => {
-  return axios.delete(`${ApiUrl}/eliminar/${idRegistros}`)
+    const token = localStorage.getItem('token');
+    
+    const headers = {
+        Authorization: `Bearer ${token}`, 
+      };
+  return axios.delete(`${ApiUrl}/eliminar/${idRegistros}`, {headers})
     .then(response => response.data)
     .catch(error => {
       console.error('Error deleting Registros:', error);

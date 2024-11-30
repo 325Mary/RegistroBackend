@@ -12,15 +12,16 @@ const ListarUsuarios = () => {
     identificacion: '',
     email: ''
   });
+
   const fetchUsuarios = async () => {
     try {
       const usuariosData = await getUsuarios();
       console.log('Usuarios obtenidos:', usuariosData);
-  
+
       if (usuariosData?.data && Array.isArray(usuariosData.data)) {
         setUsuarios(usuariosData.data);
       } else if (Array.isArray(usuariosData)) {
-        setUsuarios(usuariosData); 
+        setUsuarios(usuariosData);
       } else {
         console.warn('Formato inesperado de usuariosData:', usuariosData);
       }
@@ -29,14 +30,11 @@ const ListarUsuarios = () => {
       console.error('Error al obtener usuarios:', error);
     }
   };
-  
-  
-  
+
   useEffect(() => {
     fetchUsuarios();
   }, []);
 
- 
   const handleEdit = (index) => {
     setEditingIndex(index);
     setEditUsuario({ ...usuarios[index] });
@@ -53,12 +51,12 @@ const ListarUsuarios = () => {
       identificacion: editUsuario.identificacion || null,
       email: editUsuario.email || ''
     };
-  
+
     try {
       console.log('Datos antes de enviar:', sanitizedData);
       const response = await editarUsuario(id, sanitizedData);
       console.log('Respuesta del servidor:', response);
-  
+
       await fetchUsuarios();
       setEditingIndex(-1);
       Swal.fire('Éxito', 'Usuario actualizado correctamente', 'success');
@@ -67,7 +65,6 @@ const ListarUsuarios = () => {
       Swal.fire('Error', 'No se pudo actualizar el usuario', 'error');
     }
   };
-  
 
   const handleCancel = () => {
     setEditingIndex(-1);
@@ -97,54 +94,63 @@ const ListarUsuarios = () => {
   };
 
   return (
-    <div className="table-container">
+    <div className="cards-container">
       <h1>Lista de Usuarios</h1>
       {error && <p>Error: {error}</p>}
-      <table>
-        <thead>
-          <tr>
-            <th>Nombre</th>
-            <th>Identificación</th>
-            <th>Email</th>
-            <th>Acciones</th>
-          </tr>
-        </thead>
-        <tbody>
-  {usuarios.length > 0 ? (
-    usuarios.map((usuario, index) => (
-      <tr key={usuario.id}>
-        {editingIndex === index ? (
-          <>
-            <td><input type="text" name="name" value={editUsuario.name} onChange={handleChange} /></td>
-            <td><input type="text" name="identificacion" value={editUsuario.identificacion} onChange={handleChange} /></td>
-            <td><input type="email" name="email" value={editUsuario.email} onChange={handleChange} /></td>
-            <td>
-              <button onClick={() => handleUpdate(usuario.id)}>Actualizar</button>
-              <button onClick={handleCancel}>Cancelar</button>
-            </td>
-          </>
+
+      <div className="cards">
+        {usuarios.length > 0 ? (
+          usuarios.map((usuario, index) => (
+            <div className="cardContac" key={usuario.id}>
+              {editingIndex === index ? (
+                <div className="card-content">
+                  <div className="card-info">
+                    <input
+                      type="text"
+                      name="name"
+                      value={editUsuario.name}
+                      onChange={handleChange}
+                      placeholder="Nombre"
+                    />
+                    <input
+                      type="text"
+                      name="identificacion"
+                      value={editUsuario.identificacion}
+                      onChange={handleChange}
+                      placeholder="Identificación"
+                    />
+                    <input
+                      type="email"
+                      name="email"
+                      value={editUsuario.email}
+                      onChange={handleChange}
+                      placeholder="Email"
+                    />
+                  </div>
+                  <div className="card-actions">
+                    <button onClick={() => handleUpdate(usuario.id)}>Actualizar</button>
+                    <button onClick={handleCancel}>Cancelar</button>
+                  </div>
+                </div>
+              ) : (
+                <div className="card-content">
+                  <div className="card-info">
+                    <h3>Nombre: {usuario.name}</h3>
+                    <p>Identificación: {usuario.identificacion}</p>
+                    <p>Email: {usuario.email}</p>
+                  </div>
+                  <div className="card-actions">
+                    <button onClick={() => handleEdit(index)}>Editar</button>
+                    <button onClick={() => handleDelete(usuario.id)}>Eliminar</button>
+                  </div>
+                </div>
+              )}
+            </div>
+          ))
         ) : (
-          <>
-            <td>{usuario.name}</td>
-            <td>{usuario.identificacion}</td>
-            <td>{usuario.email}</td>
-            <td>
-              <button onClick={() => handleEdit(index)}>Editar</button>
-              <button onClick={() => handleDelete(usuario.id)}>Eliminar</button>
-            </td>
-          </>
+          <p>No hay usuarios para mostrar</p>
         )}
-      </tr>
-    ))
-  ) : (
-    <tr>
-      <td colSpan="4">No hay usuarios para mostrar</td>
-    </tr>
-  )}
-</tbody>
-
-
-      </table>
+      </div>
     </div>
   );
 };

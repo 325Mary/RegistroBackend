@@ -32,4 +32,7 @@
     color: black;
   }
 
- 
+  .cards-container {
+    margin-top: 80px; 
+  }
+  
