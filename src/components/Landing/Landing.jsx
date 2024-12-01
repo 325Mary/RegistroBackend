@@ -3,11 +3,13 @@ import './Landig.css';
 import { iniciarSesion } from "../../services/Usuarios/Login";
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../services/Usuarios/receptor'; 
+import '@fortawesome/fontawesome-free/css/all.min.css';
 
 const LandingPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const [showPassword, setShowPassword] = useState(false); 
   const navigate = useNavigate();
   const { login } = useAuth(); 
 
@@ -53,9 +55,9 @@ const LandingPage = () => {
   return (
     <div className="landing-page">
       <div className="content">
-      <div className="info-text animate-left">Bienvenido a tu gestor de contactos.</div>
-      <div className="info-text animate-right">Administra y organiza tus contactos de manera fácil y segura.</div>
-      <div className="info-text animate-left">Crea tu cuenta o inicia sesión para comenzar a gestionar tus contactos.</div>
+        <div className="info-text animate-left">Bienvenido a tu gestor de contactos.</div>
+        <div className="info-text animate-right">Administra y organiza tus contactos de manera fácil y segura.</div>
+        <div className="info-text animate-left">Crea tu cuenta o inicia sesión para comenzar a gestionar tus contactos.</div>
       </div>
 
       <div className="card">
@@ -73,15 +75,22 @@ const LandingPage = () => {
               />
             </div>
 
-            <div className="form-group">
+            <div className="form-group password-group">
               <label htmlFor="password">Password:</label>
-              <input
-                type="password"
-                id="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                required
+              <div className="password-container">
+                <input
+                  type={showPassword ? 'text' : 'password'}  
+                  id="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                />
+                <i 
+                className={`fas ${showPassword ? 'fa-eye-slash' : 'fa-eye'} password-icon`} 
+                onClick={() => setShowPassword(!showPassword)} 
               />
+
+              </div>
             </div>
 
             {error && <p className="error-message">{error}</p>}

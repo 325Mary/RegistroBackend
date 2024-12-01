@@ -128,8 +128,8 @@ const ListarUsuarios = () => {
                     />
                   </div>
                   <div className="card-actions">
-                    <button onClick={() => handleUpdate(usuario.id)}>Actualizar</button>
-                    <button onClick={handleCancel}>Cancelar</button>
+                    <button onClick={() => handleUpdate(usuario.id)}><i className="fas fa-save"></i> </button>
+                    <button onClick={handleCancel}><i className="fas fa-times-circle"></i> </button>
                   </div>
                 </div>
               ) : (
@@ -140,8 +140,8 @@ const ListarUsuarios = () => {
                     <p>Email: {usuario.email}</p>
                   </div>
                   <div className="card-actions">
-                    <button onClick={() => handleEdit(index)}>Editar</button>
-                    <button onClick={() => handleDelete(usuario.id)}>Eliminar</button>
+                    <button onClick={() => handleEdit(index)}><i className="fas fa-pencil-alt"></i> </button>
+                    <button onClick={() => handleDelete(usuario.id)}><i className="fas fa-trash-alt"></i> </button>
                   </div>
                 </div>
               )}

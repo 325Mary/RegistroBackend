@@ -1,4 +1,29 @@
-.dashboard {
+* {
+    box-sizing: border-box;
+  }
+  
+  body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    background: linear-gradient(45deg, #f06, #4a90e2);
+    background-size: 400% 400%;
+    animation: gradientAnimation 8s ease infinite;
+  }
+  
+  @keyframes gradientAnimation {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  
+  .dashboard {
     font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
@@ -12,32 +37,32 @@
     flex-direction: column;
     text-align: center;
     padding-top: 20px;
-}
-
-.header {
+  }
+  
+  .header {
     margin-bottom: 40px;
-}
-
-.header h1 {
+  }
+  
+  .header h1 {
     font-size: 2.5rem;
     color: #FFD700;
     margin-bottom: 10px;
-}
-
-.header p {
+  }
+  
+  .header p {
     font-size: 1.2rem;
     color: #ccc;
-}
-
-.contact-summary {
+  }
+  
+  .contact-summary {
     display: flex;
     justify-content: center;
     margin-bottom: 30px;
     flex-wrap: wrap;
     gap: 20px;
-}
-
-.summary-box {
+  }
+  
+  .summary-box {
     background-color: rgba(0, 0, 0, 0.7);
     padding: 20px;
     border-radius: 10px;
@@ -45,32 +70,32 @@
     width: 250px;
     text-align: center;
     transition: transform 0.3s ease;
-}
-
-.summary-box:hover {
+  }
+  
+  .summary-box:hover {
     transform: scale(1.05);
     box-shadow: 0 15px 45px rgba(0, 0, 0, 0.6);
-}
-
-.summary-box h3 {
+  }
+  
+  .summary-box h3 {
     font-size: 1.3rem;
     color: #FFD700;
-}
-
-.summary-box p {
+  }
+  
+  .summary-box p {
     font-size: 2rem;
     color: #fff;
     font-weight: bold;
-}
-
-.contact-cards {
+  }
+  
+  .contact-cards {
     display: flex;
-    gap: 30px;
+    gap: 10px;
     flex-wrap: wrap;
     justify-content: center;
-}
-
-.contact-card {
+  }
+  
+  .contact-card {
     width: 250px;
     background-color: rgba(0, 0, 0, 0.7);
     border-radius: 15px;
@@ -79,29 +104,29 @@
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     position: relative;
     margin: 15px;
-}
-
-.contact-card:hover {
+  }
+  
+  .contact-card:hover {
     transform: scale(1.05);
     box-shadow: 0 15px 45px rgba(0, 0, 0, 0.6);
-}
-
-.card-content {
-    padding: 20px;
-}
-
-.card-content h2 {
+  }
+  
+  .card-content {
+    padding: 0px;
+  }
+  
+  .card-content h2 {
     font-size: 1.3rem;
     margin-bottom: 10px;
     text-transform: uppercase;
-}
-
-.card-content p {
+  }
+  
+  .card-content p {
     font-size: 0.9rem;
     margin-bottom: 5px;
-}
-
-.card-hover {
+  }
+  
+  .card-hover {
     position: absolute;
     bottom: 0;
     width: 100%;
@@ -110,13 +135,13 @@
     display: none;
     text-align: center;
     border-radius: 0 0 15px 15px;
-}
-
-.contact-card:hover .card-hover {
+  }
+  
+  .contact-card:hover .card-hover {
     display: block;
-}
-
-.view-btn {
+  }
+  
+  .view-btn {
     background-color: #FFD700;
     color: #1d2d44;
     padding: 10px 20px;
@@ -124,19 +149,25 @@
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-}
-
-.view-btn:hover {
+  }
+  
+  .view-btn:hover {
     background-color: #fff;
     color: #1d2d44;
-}
-
-@keyframes fadeIn {
-    0% { opacity: 0; transform: translateY(-30px); }
-    100% { opacity: 1; transform: translateY(0); }
-}
-
-.modal-overlay {
+  }
+  
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+      transform: translateY(-30px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .modal-overlay {
     position: fixed;
     top: 0;
     left: 0;
@@ -148,9 +179,9 @@
     align-items: center;
     z-index: 1000;
     padding: 20px;
-}
-
-.modal-content {
+  }
+  
+  .modal-content {
     background-color: #fff;
     color: #333;
     border-radius: 8px;
@@ -159,19 +190,19 @@
     width: 100%;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
     text-align: left;
-}
-
-.modal-content h2 {
+  }
+  
+  .modal-content h2 {
     font-size: 1.5rem;
     color: #FFD700;
-}
-
-.modal-content p {
+  }
+  
+  .modal-content p {
     font-size: 1rem;
     margin: 10px 0;
-}
-
-.close-btn {
+  }
+  
+  .close-btn {
     background-color: #FFD700;
     border: none;
     padding: 10px 20px;
@@ -180,14 +211,14 @@
     border-radius: 5px;
     color: #1d2d44;
     transition: background-color 0.3s ease;
-}
-
-.close-btn:hover {
+  }
+  
+  .close-btn:hover {
     background-color: #fff;
     color: #1d2d44;
-}
-
-.contact-summary {
+  }
+  
+  .contact-summary {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -195,71 +226,72 @@
     background-color: #f8f9fa;
     border-radius: 8px;
     margin: 10px 0;
-}
-
-.summary-box {
+  }
+  
+  .summary-box {
     flex: 1;
-}
-
-.time-icon {
-    font-size: 60px; 
+  }
+  
+  .time-icon {
+    font-size: 60px;
     margin-left: 500px;
-    margin-top: 10px; 
-    color: #ff9900; 
-}
-
-.summary-box {
+    margin-top: 10px;
+    color: #ff9900;
+  }
+  
+  .summary-box {
     display: flex;
-    align-items: center; 
-}
-
-.summary-box h3 {
+    align-items: center;
+  }
+  
+  .summary-box h3 {
     margin-right: 10px;
-}
-
-@media (max-width: 768px) {
+  }
+  
+  @media (max-width: 768px) {
     .header h1 {
-        font-size: 2rem;
+      font-size: 2rem;
     }
     .header p {
-        font-size: 1rem;
+      font-size: 1rem;
     }
     .summary-box {
-        width: 200px;
+      width: 200px;
     }
     .contact-card {
-        width: 200px;
+      width: 200px;
     }
     .contact-summary {
-        flex-direction: column;
-        align-items: center;
+      flex-direction: column;
+      align-items: center;
     }
     .time-icon {
-        font-size: 50px;
-        margin-left: 0;
-        margin-top: 20px;
+      font-size: 50px;
+      margin-left: 0;
+      margin-top: 20px;
     }
-}
-
-@media (max-width: 480px) {
+  }
+  
+  @media (max-width: 480px) {
     .header h1 {
-        font-size: 1.6rem;
+      font-size: 1.6rem;
     }
     .header p {
-        font-size: 0.9rem;
+      font-size: 0.9rem;
     }
     .summary-box {
-        width: 100%;
+      width: 100%;
     }
     .contact-card {
-        width: 100%;
+      width: 100%;
     }
     .contact-summary {
-        flex-direction: column;
-        padding: 15px;
+      flex-direction: column;
+      padding: 15px;
     }
     .time-icon {
-        font-size: 40px;
-        margin-left: 0;
+      font-size: 40px;
+      margin-left: 0;
     }
-}
+  }
+  

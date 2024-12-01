@@ -1,4 +1,4 @@
-import React from 'react';
+// import React from 'react';
 import LandingPage from './components/Landing/Landing';
 import Dashboard from './components/dashboard/dashboard'
 import Navbar from './components/navbar/navbar';
@@ -19,7 +19,7 @@ function App() {
       <Routes>
       <Route path="/" element={<LandingPage />} />
       <Route path="/dashboard" element={<Dashboard />} />
-      <Route path='/registro' element={<RegistroUsuario />} />
+      <Route path='/registrarUser' element={<RegistroUsuario />} />
       <Route path='/listaUsuarios' element={<ListarUsuarios />} />
       <Route path='/ListarRegistros' element={<ListarRegistros />} />
       <Route path='/CrearRegistro' element={<CrearRegistros />} />

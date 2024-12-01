@@ -1,99 +1,108 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
 .registro {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-    min-height: 100vh;
-    background-color: #f4f4f4;
-  }
-  
-  .card {
-    background-color: white;
-    padding: 20px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    max-width: 600px;
-    border-radius: 8px;
-  }
-  
-  .card h3 {
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  
-  .form-group {
-    margin-bottom: 15px;
-  }
-  
-  label {
-    display: block;
-    margin-bottom: 5px;
-    font-size: 1rem;
-    font-weight: 500;
-  }
-  
-  input {
-    width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  min-height: 100vh;
+  background-color: #f4f4f4;
+}
+
+.tarjet {
+  background-color: white;
+  padding: 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 600px;
+  border-radius: 8px;
+}
+
+.tarjet h3 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  margin: 5px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+button {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  background-color: #4CAF50;
+  color: #FFD700;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+.error-message {
+  color: red;
+  text-align: center;
+  margin-top: 10px;
+  font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+  .registro {
     padding: 10px;
-    margin: 5px 0;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 1rem;
   }
-  
-  button {
-    display: block;
+
+  .tarjet {
+    padding: 15px;
     width: 100%;
-    padding: 12px;
-    background-color: #4CAF50;
-    color: #FFD700;
-    border: none;
-    border-radius: 5px;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: background-color 0.3s;
   }
-  
-  button:hover {
-    background-color: #45a049;
-  }
-  
-  .error-message {
-    color: red;
-    text-align: center;
-    margin-top: 10px;
+
+  input, button {
     font-size: 0.9rem;
+    padding: 10px;
   }
-  
-  @media (max-width: 768px) {
-    .registro {
-      padding: 10px;
-    }
-  
-    .card {
-      padding: 15px;
-      width: 100%;
-    }
-  
-    input, button {
-      font-size: 0.9rem;
-      padding: 10px;
-    }
+}
+
+@media (max-width: 480px) {
+  .tarjet {
+    padding: 10px;
+    width: 100%;
   }
-  
-  @media (max-width: 480px) {
-    .card {
-      padding: 10px;
-      width: 100%;
-    }
-  
-    input, button {
-      font-size: 0.8rem;
-      padding: 8px;
-    }
-  
-    .error-message {
-      font-size: 0.8rem;
-    }
+
+  input, button {
+    font-size: 0.8rem;
+    padding: 8px;
   }
-  
+
+  .error-message {
+    font-size: 0.8rem;
+  }
+}

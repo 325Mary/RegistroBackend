@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -97,6 +101,7 @@ input {
   border: 1px solid #ccc;
   border-radius: 5px;
   transition: border 0.3s ease;
+  background-color: #fff;
 }
 
 input:focus {
@@ -149,6 +154,8 @@ button:hover {
 
 input:focus, button:hover {
   transform: scale(1.05);
+  border-color: #4a90e2;
+  background-color: #3a8dff;
 }
 
 @media (max-width: 480px) {
@@ -211,4 +218,30 @@ input:focus, button:hover {
   .info-text {
     font-size: 20px;
   }
+}
+
+.password-container {
+  position: relative;
+}
+
+.password-container input {
+  width: 100%;
+  padding-right: 10px;  
+}
+
+.password-icon {
+  position: absolute;
+  right: 10px; 
+  top: 50%;  
+  transform: translateY(-50%);  
+  cursor: pointer;
+  color: #888;
+}
+
+.password-icon:hover {
+  color: #FFD700; 
+}
+
+.password-icon:focus {
+  outline: none;
 }

@@ -1,38 +1,133 @@
-
 .table-container {
-    margin-top: 50px;
-    background-color: #f2f2f2;
-    width: 1000px;
-  }
-  
-  .table-container table {
+  margin-top: 50px;
+  background-color: #f2f2f2;
+  width: 100%;
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.table-container table {
+  width: 100%;
+  border-collapse: collapse;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+.table-container th,
+.table-container td {
+  padding: 12px 16px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+  color: #000;
+}
+
+.table-container th {
+  font-weight: bold;
+  color: black;
+}
+
+.table-container tbody tr:hover {
+  background-color: white;
+}
+
+h1 {
+  color: black;
+  text-align: center;
+}
+
+.cards-container {
+  margin-top: 80px;
+}
+
+.cardContac {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.card-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.card-info h3, .card-info p {
+  margin: 5px 0;
+}
+
+.card-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-start;
+}
+
+.card-actions button {
+  padding: 8px 15px;
+  border: none;
+  color: #FFD700;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 5px;
+}
+
+.card-actions button:hover {
+  background-color: #0056b3;
+  border-color: #004085;
+}
+
+.card-actions button i {
+  margin-right: 5px;
+}
+
+.card-actions button {
+  width: auto;
+  min-width: 40px;
+  max-width: 80px;
+}
+
+.card-actions button:focus,
+.card-actions button:active {
+  background-color: #007bff;
+  outline: none;
+}
+
+@media (max-width: 768px) {
+  .table-container {
     width: 100%;
-    border-collapse: collapse;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-  }
-  
-  .table-container th,
-  .table-container td {
-    padding: 12px 16px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
-    color: #000;
-  }
-  
-  .table-container th {
-    font-weight: bold;
-    color: black;
-  }
-  
-  .table-container tbody tr:hover {
-    background-color:white;
-  }
-  h1{
-    color: black;
+    padding: 10px;
   }
 
   .cards-container {
-    margin-top: 80px; 
+    margin-top: 40px;
   }
-  
+
+  .cardContac {
+    padding: 10px;
+  }
+
+  .card-actions {
+    flex-wrap: wrap;
+    gap: 5px;
+  }
+
+  .card-actions button {
+    width: 100%;
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .card-actions button {
+    font-size: 12px;
+    padding: 6px 12px;
+  }
+}

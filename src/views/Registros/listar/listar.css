@@ -1,129 +1,128 @@
 .cards-container {
-    padding: 20px;
-  }
-  
-  .search-container {
-    margin-bottom: 20px;
-    text-align: center;
-  }
-  
-  .search-input {
-    width: 100%;
-    max-width: 300px;
-    padding: 15px;
-    font-size: 18px;
-    border: 2px solid #ccc;
-    border-radius: 8px;
-    outline: none;
-  }
-  
-  .search-input:focus {
-    border-color: #007bff;
-  }
-  
-  .cards {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    max-height: 500px;  
-    overflow-y: auto;  
-    scrollbar-color: transparent transparent;  
-  }
-  
-  .cards::-webkit-scrollbar {
-    width: 8px;
-  }
-  
-  .cards::-webkit-scrollbar-thumb {
-    background-color: transparent; 
-  }
-  
-  .cards::-webkit-scrollbar-track {
-    background: transparent;  
-  }
-  
-  .cardContac {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    border: 1px solid #ddd;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    display: flex;
-    justify-content: space-between;
-  }
-  
-  .card-content {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    width: 100%;
-    gap: 20px;
-  }
-  
-  .card-info {
-    flex-grow: 1;
-    text-align: left;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-  }
-  
-  .card-info h3,
-  .card-info p {
-    margin: 5px 0;
-  }
-  
-  .card-actions {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-    width: 100px;
-  }
-  
-  .card-info p:last-child {
-    word-wrap: break-word;
-    overflow-wrap: break-word;
-    white-space: normal;
-    flex-shrink: 0;
-  }
-  
-  .buttons {
-    padding: 10px 20px;
-    font-size: 14px;
-    border: none;
-    background-color: #007bff;
-    color: black;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    width: 205px;
+  padding: 20px;
+}
 
-  }
-  button {
-    padding: 10px 20px;
-    font-size: 14px;
-    border: none;
-    background-color: #007bff;
-    color: black;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  button:hover {
-    background-color: #0056b3;
-  }
-  
-  input {
-    padding: 10px;
-    font-size: 14px;
-    margin: 5px 0;
-    width: 100%;
-    border-radius: 5px;
-    border: 1px solid #ddd;
-  }
-  
-  input:focus {
-    border-color: #007bff;
-  }
-  
+.search-container {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.search-input {
+  width: 100%;
+  max-width: 300px;
+  padding: 15px;
+  font-size: 18px;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  outline: none;
+}
+
+.search-input:focus {
+  border-color: #007bff;
+}
+
+.cards {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-height: 500px;
+  overflow-y: auto;
+  scrollbar-color: transparent transparent;
+}
+
+.cards::-webkit-scrollbar {
+  width: 8px;
+}
+
+.cards::-webkit-scrollbar-thumb {
+  background-color: transparent;
+}
+
+.cards::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.cardContac {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+}
+
+.card-content {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  gap: 20px;
+}
+
+.card-info {
+  flex-grow: 1;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.card-info h3,
+.card-info p {
+  margin: 5px 0;
+}
+
+.card-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  width: 100px;
+}
+
+.card-info p:last-child {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  white-space: normal;
+  flex-shrink: 0;
+}
+
+.buttons {
+  padding: 10px 20px;
+  font-size: 14px;
+  border: none;
+  background-color: #007bff;
+  color: black;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 205px;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 14px;
+  border: none;
+  background-color: #007bff;
+  color: black;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+input {
+  padding: 10px;
+  font-size: 14px;
+  margin: 5px 0;
+  width: 100%;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+}
+
+input:focus {
+  border-color: #007bff;
+}

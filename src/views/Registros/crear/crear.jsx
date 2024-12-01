@@ -32,9 +32,9 @@ const CrearRegistros = () => {
 
   return (
     <div className="registro">
-      <div className="card">
+      <div className="tarjet">
         <h3>FORMULARIO DE REGISTRO</h3>
-        <div className="card-body">
+        <div className="tarjet-body">
           <form onSubmit={handleCrearRegistro}>
             <div className="form-group">
               <label htmlFor="name">Nombre:</label>

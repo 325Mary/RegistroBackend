@@ -1,13 +1,13 @@
 import  { useState } from 'react';
 import { createUsuario } from "../../../services/Usuarios/Login";
-// import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const RegistroUsuario = () => {
   const [name, setname] = useState('');
   const [identificacion, setIdentificacion] = useState('');
   const [email, setEmail] = useState('');
   const [error, setError] = useState('');
-//   const navigate = useNavigate();
+  const navigate = useNavigate();
 
  
 
@@ -22,7 +22,7 @@ const RegistroUsuario = () => {
         password : identificacion
       });
       console.log('Usuario creado:', userData);
-    //   navigate('/listaUsuarios');
+      navigate('/listaUsuarios');
 
     } catch (error) {
         if (error.response && error.response.data && error.response.data.error) {
@@ -35,9 +35,9 @@ const RegistroUsuario = () => {
 
   return (
     <div className="registro-usuario">
-      <div className="card"> 
+      <div className="tarjet"> 
         <h3>Registro de Usuario</h3>
-        <div className="card-body">
+        <div className="tarjet-body">
           <form onSubmit={handleRegistro}>
             <div className="form-group">
               <label htmlFor="name">Nombre:</label>
@@ -53,10 +53,10 @@ const RegistroUsuario = () => {
            
 
             <div className="form-group">
-              <label htmlFor="Identificacion">Identificación:</label>
+              <label htmlFor="identificacion">Identificación:</label>
               <input
                 type="text"
-                id="Identificacion"
+                id="identificacion"
                 value={identificacion}
                 onChange={(e) => setIdentificacion(e.target.value)}
                 required
