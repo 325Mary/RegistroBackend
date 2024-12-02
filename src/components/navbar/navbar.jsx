@@ -9,6 +9,10 @@ const Navbar = () => {
   const { cerrarSesion } = useCerrarSesion();
   const [menuOpen, setMenuOpen] = useState(false);
 
+  if (isLoggedIn === null) {
+    return null;
+  }
+
   const handleCerrarSesion = () => {
     cerrarSesion();
     logout();

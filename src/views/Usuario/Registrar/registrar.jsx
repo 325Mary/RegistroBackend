@@ -1,13 +1,13 @@
 import  { useState } from 'react';
 import { createUsuario } from "../../../services/Usuarios/Login";
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 
 const RegistroUsuario = () => {
   const [name, setname] = useState('');
   const [identificacion, setIdentificacion] = useState('');
   const [email, setEmail] = useState('');
   const [error, setError] = useState('');
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
  
 
@@ -22,7 +22,7 @@ const RegistroUsuario = () => {
         password : identificacion
       });
       console.log('Usuario creado:', userData);
-      navigate('/listaUsuarios');
+      // navigate('/listaUsuarios');
 
     } catch (error) {
         if (error.response && error.response.data && error.response.data.error) {
