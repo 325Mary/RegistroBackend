@@ -27,7 +27,7 @@ const LandingPage = () => {
   };
 
   const handleRegisterRedirect = () => {
-    navigate('/registro'); 
+    navigate('/registrarUser'); 
   };
 
   useEffect(() => {
